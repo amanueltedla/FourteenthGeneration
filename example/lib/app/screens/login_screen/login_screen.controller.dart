@@ -65,7 +65,7 @@ class LoginScreenController extends MvcController {
         );
         return;
       case CheckAuthResult.OK:
-        Get.offNamed(AppRoutes.INITIAL);
+        Get.offNamed(AppRoutes.MAIN);
         return;
     }
   }

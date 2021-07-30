@@ -38,9 +38,9 @@ class TelegramPost extends StatelessWidget {
           children: [
             this._postFrameHeader,
             this.postContent,
-            this
-                ._postFrameFooter
-                .paddingSymmetric(vertical: 5.0, horizontal: 10.0),
+            // this
+            //     ._postFrameFooter
+            //     .paddingSymmetric(vertical: 5.0, horizontal: 10.0),
           ],
         ),
       );
@@ -58,9 +58,9 @@ class TelegramPost extends StatelessWidget {
 
   Widget get _postFrameFooter => Row(
         children: [
-          this._postViewsCount,
-          Spacer(),
-          this._postCommands,
+          // this._postViewsCount,
+
+          // this._postCommands,
         ],
       );
 

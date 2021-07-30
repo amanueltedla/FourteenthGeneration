@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:telegram_service_example/routes/routes.dart';
 
 // import 'package:shop_app/screens/profile/profile_screen.dart';
 
@@ -43,15 +45,15 @@ class CustomBottomNavBar extends StatelessWidget {
                   color: MenuState.home == selectedMenu
                       ? kPrimaryColor
                       : Colors.grey,
-                  onPressed: () => {}
+                  onPressed: () => Get.offNamed(AppRoutes.MAIN)
                   // Navigator.pushNamed(context, HomeScreen.routeName),
                   ),
               IconButton(
-                  icon: Icon(Icons.ac_unit),
+                  icon: Icon(Icons.file_upload),
                   color: MenuState.news == selectedMenu
                       ? kPrimaryColor
                       : Colors.grey,
-                  onPressed: () => {}
+                  onPressed: () => Get.offNamed(AppRoutes.RESOURCE)
                   // Navigator.pushNamed(context, NewsScreen.routeName),
                   ),
               IconButton(

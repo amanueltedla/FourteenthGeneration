@@ -17,13 +17,17 @@ class LoginScreen extends MvcScreen<LoginScreenController> {
       body: controller.state == MvcController.LOADING_STATE &&
               !controller.waitForCode
           ? _loading
-          : _body,
+          : Padding(
+              padding: const EdgeInsets.only(left: 30, right: 30, top: 80),
+              child: Center(child: _body),
+            ),
       floatingActionButton: _actionButton,
     );
   }
 
   Widget get _actionButton => controller.showActionButton
       ? FloatingActionButton(
+          backgroundColor: Colors.pink,
           child: _actionButtonIcon,
           onPressed: !controller.waitForCode
               ? controller.submitPhoneNumber
@@ -93,7 +97,11 @@ class LoginScreen extends MvcScreen<LoginScreenController> {
         child: TextField(
           controller: controller.phoneEntryController,
           decoration: InputDecoration(
-            border: OutlineInputBorder(),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(28),
+              borderSide: BorderSide(color: Colors.pink),
+              gapPadding: 10,
+            ),
             labelText: 'Enter you phone number',
             prefixText: '+',
             hintText: '251 9******',
@@ -102,6 +110,8 @@ class LoginScreen extends MvcScreen<LoginScreenController> {
       );
 
   Widget get _loading => Center(
-        child: CircularProgressIndicator(),
+        child: CircularProgressIndicator(
+          backgroundColor: Colors.pink,
+        ),
       );
 }

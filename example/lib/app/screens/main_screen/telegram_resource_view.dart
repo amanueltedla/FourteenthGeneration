@@ -11,7 +11,7 @@ import 'package:telegram_service_example/app/widgets/messages_listview/messages_
 import '../../../enums.dart';
 import 'main_screen.controller.dart';
 
-class MainScreen extends MvcScreen<MainScreenController> {
+class ResourceScreen extends MvcScreen<MainScreenController> {
   @override
   MainScreenController initController() => MainScreenController();
 
@@ -23,39 +23,39 @@ class MainScreen extends MvcScreen<MainScreenController> {
         title: Text(AppScaffold().title),
         backgroundColor: Colors.pink,
       ),
-      body: _body,
-      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.home),
+      body: TelegramMessagesList(channelId: null),
+      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.news),
     );
   }
 
-  Widget get _body => Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Expanded(
-              child: MvcCommandBuilder(
-            command: c.channelsLoadCmd,
-            onCompleted: (_) => _channelsListView,
-            onReady: (_) => Center(
-              child: Text(
-                'TeleFeed!',
-                style: Theme.of(Get.context).textTheme.headline2,
-              ),
-            ),
-            onExecuting: (_) => _loadingView,
-          )),
-        ],
-      );
+  // Widget get _body => Column(
+  //       mainAxisAlignment: MainAxisAlignment.start,
+  //       crossAxisAlignment: CrossAxisAlignment.stretch,
+  //       children: [
+  //         Expanded(
+  //             child: MvcCommandBuilder(
+  //           command: c.channelsLoadCmd,
+  //           onCompleted: (_) => _channelsListView,
+  //           onReady: (_) => Center(
+  //             child: Text(
+  //               'TeleFeed!',
+  //               style: Theme.of(Get.context).textTheme.headline2,
+  //             ),
+  //           ),
+  //           onExecuting: (_) => _loadingView,
+  //         )),
+  //       ],
+  //     );
 
-  Widget get _loadingView => Align(
-        alignment: Alignment.center,
-        child: CircularProgressIndicator(),
-      );
+  // Widget get _loadingView => Align(
+  //       alignment: Alignment.center,
+  //       child: CircularProgressIndicator(),
+  //     );
 
-  Widget get _channelsListView => ListView.builder(
-        itemBuilder: channelListItemBuilder,
-        itemCount: c.channelsCount,
-      );
+  // Widget get _channelsListView => ListView.builder(
+  //       itemBuilder: channelListItemBuilder,
+  //       itemCount: c.channelsCount,
+  //     );
 
   Widget channelListItemBuilder(context, int index) {
     TelegramChannelInfo channelInfo = c.channels[index];
