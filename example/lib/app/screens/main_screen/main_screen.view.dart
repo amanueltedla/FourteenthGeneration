@@ -2,11 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:id_mvc_app_framework/framework.dart';
 import 'package:id_mvc_app_framework/utils/command/MvcCommandBuilder.dart';
+import 'package:telegram_service_example/app/components/coustom_bottom_nav_bar.dart';
 import 'package:telegram_service_example/app/model/channel_info.dart';
 
 import 'package:telegram_service_example/app/widgets/app_scaffold.dart';
 import 'package:telegram_service_example/app/widgets/messages_listview/messages_listview.view.dart';
 
+import '../../../enums.dart';
 import 'main_screen.controller.dart';
 
 class MainScreen extends MvcScreen<MainScreenController> {
@@ -24,21 +26,10 @@ class MainScreen extends MvcScreen<MainScreenController> {
         child: Scaffold(
           appBar: AppBar(
             title: Text(AppScaffold().title),
-            bottom: TabBar(
-              tabs: [
-                Text('Channels'),
-                Text('Messages'),
-              ],
-            ),
+            backgroundColor: Colors.pink,
           ),
-          body: TabBarView(
-            children: [
-              _body,
-              TelegramMessagesList(
-                channelId: null,
-              ),
-            ],
-          ),
+          body: _body,
+          bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.home),
         ),
       );
 

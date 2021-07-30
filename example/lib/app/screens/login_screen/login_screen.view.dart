@@ -63,6 +63,7 @@ class LoginScreen extends MvcScreen<LoginScreenController> {
           TextField(
             controller: controller.codeEntryController,
             decoration: InputDecoration(
+              floatingLabelBehavior: FloatingLabelBehavior.always,
               border: OutlineInputBorder(),
               labelText: 'Enter 5 digit code',
               hintText: '12345',
@@ -95,7 +96,7 @@ class LoginScreen extends MvcScreen<LoginScreenController> {
             border: OutlineInputBorder(),
             labelText: 'Enter you phone number',
             prefixText: '+',
-            hintText: '48 519478689',
+            hintText: '251 9******',
           ),
         ),
       );

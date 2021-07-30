@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class AppScaffold extends StatelessWidget {
   final Widget body;
   final String title;
+  final String nav;
   final List<Widget> actions;
   final FloatingActionButton floatingActionButton;
 
@@ -11,6 +12,7 @@ class AppScaffold extends StatelessWidget {
     this.body,
     this.title = 'Telegram Client Test',
     this.actions,
+    this.nav,
     this.floatingActionButton,
   }) : super(key: key);
 
@@ -21,9 +23,11 @@ class AppScaffold extends StatelessWidget {
         centerTitle: true,
         title: Text(title),
         actions: actions,
+        backgroundColor: Colors.pink,
       ),
       body: body,
       floatingActionButton: floatingActionButton,
+      // bottomNavigationBar: CustomBottomNavBar,
     );
   }
 }

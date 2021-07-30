@@ -68,6 +68,7 @@ void main() async {
   runMVCApp(
     exceptionsHandlingConfig: AppErrorConfig(),
     appSetup: MvcAppSettings(
+      debugShowCheckedModeBanner: false,
       title: 'Sample mvc app',
       initialRoute: AppRoutes.INITIAL,
       getPages: AppRoutes.routes,
