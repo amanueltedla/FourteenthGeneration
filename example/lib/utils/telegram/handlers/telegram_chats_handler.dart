@@ -80,8 +80,8 @@ class TdlibChatsHandler extends TelegramEventHandler with GetxServiceMixin {
   void getChatMessages(int chatId) {
     TelegramService.instance.sendCommand(GetChatHistory(
       chatId: chatId,
-      offset: -10,
-      limit: 30,
+      offset: 0,
+      limit: 100,
       fromMessageId: 0,
     ));
   }
@@ -90,8 +90,8 @@ class TdlibChatsHandler extends TelegramEventHandler with GetxServiceMixin {
     final messages =
         await TelegramService.instance.sendCommandWithResult(GetChatHistory(
       chatId: chatId,
-      offset: -10,
-      limit: 30,
+      offset: 0,
+      limit: 100,
       fromMessageId: 0,
     ));
     if (!(messages is Messages)) return;
@@ -107,22 +107,32 @@ class TdlibChatsHandler extends TelegramEventHandler with GetxServiceMixin {
   }
 
   Future<void> getAllChatsAsync() async {
-    final chats = await TelegramService.instance.sendCommandWithResult(
-      GetChats(
-        chatList: ChatListMain(),
-        limit: 100,
-        offsetOrder: 9223372036854775807, //load chats from the beginning
-      ),
-    );
-    if (!(chats is Chats)) return;
-    for (var chatId in (chats as Chats).chatIds) {
+    // final chats = await TelegramService.instance.sendCommandWithResult(
+    //   GetChats(
+    //     chatList: ChatListMain(),
+    //     limit: 100,
+    //     offsetOrder: 9223372036854775807, //load chats from the beginning
+    //   ),
+    // );
+    // if (!(chats is Chats)) return;
+    // for (var chatId in (chats as Chats).chatIds) {
+    //   final chat = await TelegramService.instance.sendCommandWithResult(
+    //     GetChat(
+    //       chatId: chatId,
+    //     ),
+    //   );
+    //   if (!(chat is Chat)) continue;
+    //   _handleChatEvent(chat);
+    // }
+       
       final chat = await TelegramService.instance.sendCommandWithResult(
-        GetChat(
-          chatId: chatId,
+        SearchPublicChat(
+          username: "YM4TN",
         ),
       );
-      if (!(chat is Chat)) continue;
-      _handleChatEvent(chat);
-    }
+      if ((chat is Chat)){
+        _handleChatEvent(chat);
+      }
+      //_handleChatEvent(chat);
   }
 }
