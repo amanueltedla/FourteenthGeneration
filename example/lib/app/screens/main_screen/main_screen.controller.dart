@@ -10,8 +10,8 @@ class MainScreenController extends MvcController {
   final channelsStore = TelegramChannelInfoStore();
   final MvcCommand channelsLoadCmd = LoadChannelsCmd.cmd();
 
-  List<TelegramChannelInfo> get channels => channelsStore.values.toList();
-  int get channelsCount => channelsStore?.values?.length ?? 0;
+  List<TelegramChannelInfo> get channels => channelsStore.values.toList().where((element) => element.userName != "YM4TN").toList();
+  int get channelsCount => channelsStore?.values?.toList().where((element) => element.userName != "YM4TN")?.length  ?? 0;
 
   void showChannelMessages(TelegramChannelInfo channelInfo) {
     Get.to(TelegramMessagesScreen(

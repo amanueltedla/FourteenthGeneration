@@ -12,6 +12,7 @@ part 'channel_info.g.dart';
 class TelegramChannelInfo {
   final int id;
   final String title;
+  final String userName;
 
   @RxChatPhotoInfoSerializer()
   final Rx<ChatPhotoInfo> photoInfoRx;
@@ -60,13 +61,14 @@ class TelegramChannelInfo {
 
   bool get isChannelPhotoDownloaded => _checkChannelPhotoDownloaded();
 
-  TelegramChannelInfo.fromChat(Chat chat)
+  TelegramChannelInfo.fromChat(Chat chat, String userName)
       : this.id = chat.id,
         this.title = chat.title,
-        this.photoInfoRx = chat.photo.obs;
+        this.photoInfoRx = chat.photo.obs,
+        this.userName = userName;
 
   // Default constructor for build_runner to work
-  TelegramChannelInfo(this.id, this.title, this.photoInfoRx);
+  TelegramChannelInfo(this.id, this.title, this.photoInfoRx, this.userName);
 
   // JSON serialization/deserialization
   factory TelegramChannelInfo.fromJson(Map<String, dynamic> json) =>

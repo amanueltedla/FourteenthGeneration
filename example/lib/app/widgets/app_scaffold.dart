@@ -10,7 +10,7 @@ class AppScaffold extends StatelessWidget {
   const AppScaffold({
     Key key,
     this.body,
-    this.title = 'Telegram Client Test',
+    this.title = '14th Generation',
     this.actions,
     this.nav,
     this.floatingActionButton,

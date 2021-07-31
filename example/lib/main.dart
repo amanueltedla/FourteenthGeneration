@@ -15,7 +15,6 @@ import 'package:telegram_service_example/routes/routes.dart';
 import 'app/widgets/telegram_post/post/content_widgets/messageText_post/messageText_post.view.dart';
 
 import 'app/widgets/telegram_post/post/content_widgets/messageVideo_post/messageVideo_post.view.dart';
-import 'app/widgets/telegram_post/post/content_widgets/unknown_post_type/unknown_post_type.view.dart';
 import 'utils/telegram/handlers/telegram_chats_handler.dart';
 import 'utils/telegram/handlers/telegram_file_download_handler.dart';
 import 'utils/telegram/handlers/telegram_login_handler.dart';
@@ -35,7 +34,7 @@ void main() async {
       MessagePhotoPostContent.builder,
       MessageVideoPostContent.builder,
     ],
-    defaultBuilder: UnknownPostContent.builder,
+    defaultBuilder: null,
   );
 
   TelegramService.start(
@@ -80,7 +79,7 @@ void main() async {
 void teleServiceEvent(TdObject event, [requestID]) async {
   final log =
       "event [${event.getConstructor()}]:\n ${JsonObject.fromJson(event.toJson()).toStringWithIndent()}\n\n";
-//  Get.log(log);
+   // Get.log(log);
   await writeToLogFile(log);
 }
 

@@ -38,9 +38,7 @@ class TelegramPost extends StatelessWidget {
           children: [
             this._postFrameHeader,
             this.postContent,
-            // this
-            //     ._postFrameFooter
-            //     .paddingSymmetric(vertical: 5.0, horizontal: 10.0),
+            this._postFrameFooter
           ],
         ),
       );
@@ -58,7 +56,7 @@ class TelegramPost extends StatelessWidget {
 
   Widget get _postFrameFooter => Row(
         children: [
-          // this._postViewsCount,
+           Container()
 
           // this._postCommands,
         ],
@@ -66,18 +64,18 @@ class TelegramPost extends StatelessWidget {
 
   Widget get _postViewsCount => Row(
         children: [
-          Icon(
-            Icons.visibility,
-            size: 16,
-            color: Colors.grey,
-          ).paddingOnly(right: 5),
-          Text(
-            '$postViewsCount',
-            style: TextStyle(
-              color: Colors.grey,
-              fontSize: 15,
-            ),
-          )
+          // Icon(
+          //   Icons.visibility,
+          //   size: 16,
+          //   color: Colors.grey,
+          // ).paddingOnly(right: 5),
+          // Text(
+          //   '$postViewsCount',
+          //   style: TextStyle(
+          //     color: Colors.grey,
+          //     fontSize: 15,
+          //   ),
+          // )
         ],
       );
 

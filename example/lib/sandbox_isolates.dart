@@ -64,7 +64,7 @@ dynamic createChannelnfo(int i) {
   final channelsStore = TelegramChannelInfoStore();
   int id = Random().nextInt(10000);
   channelsStore[i] =
-      TelegramChannelInfo(i, "test channel $id", Rx(ChatPhotoInfo()));
+      TelegramChannelInfo(i, "test channel $id", Rx(ChatPhotoInfo()),"");
   return channelsStore[i].toJson();
 }
 

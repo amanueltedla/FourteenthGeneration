@@ -8,6 +8,7 @@ import 'package:telegram_service_example/app/model/channel_info_store.dart';
 import 'package:telegram_service_example/app/model/message_info.dart';
 import 'package:telegram_service_example/app/model/message_info_store.dart';
 import 'package:telegram_service_example/utils/telegram/posts_builders/post_content_builder_service.dart';
+import 'package:flutter/foundation.dart';
 
 class TdlibChatsHandler extends TelegramEventHandler with GetxServiceMixin {
   static TdlibChatsHandler get instance => Get.find();
@@ -28,7 +29,7 @@ class TdlibChatsHandler extends TelegramEventHandler with GetxServiceMixin {
         _handleChatsEvent(event as Chats);
         return;
       case Chat.CONSTRUCTOR:
-        _handleChatEvent(event as Chat);
+        _handleChatEvent(event as Chat,"");
         return;
       case Messages.CONSTRUCTOR:
         _handleMessagesEvent(event as Messages);
@@ -59,11 +60,11 @@ class TdlibChatsHandler extends TelegramEventHandler with GetxServiceMixin {
     return store;
   }
 
-  void _handleChatEvent(Chat chat) {
+  void _handleChatEvent(Chat chat, String channelName) {
     if (chat.type.getConstructor() != ChatTypeSupergroup.CONSTRUCTOR) return;
     final channelsStore = TelegramChannelInfoStore();
 
-    channelsStore[chat.id] = TelegramChannelInfo.fromChat(chat);
+    channelsStore[chat.id] = TelegramChannelInfo.fromChat(chat,channelName);
   }
 
   void _handleChatsEvent(Chats chats) {
@@ -124,15 +125,26 @@ class TdlibChatsHandler extends TelegramEventHandler with GetxServiceMixin {
     //   if (!(chat is Chat)) continue;
     //   _handleChatEvent(chat);
     // }
-       
-      final chat = await TelegramService.instance.sendCommandWithResult(
-        SearchPublicChat(
-          username: "YM4TN",
-        ),
-      );
-      if ((chat is Chat)){
-        _handleChatEvent(chat);
+      List<String> channels = new List<String>();
+      channels.add("YM4TN");
+      channels.add("jesusmed");
+      channels.add("leadershipskill");
+      channels.add("ym4tn_evangelism");
+      for(var channelNames in channels){
+          final chat = await TelegramService.instance.sendCommandWithResult(
+                  SearchPublicChat(
+                    username: channelNames,
+                  ),
+                );
+                if ((chat is Chat)){
+                   Get.log("Channel id:-" + chat.id.toString());
+                   Get.log("Channel Name:-" + channelNames);
+                   debugPrint('Channel id:- ${chat.id.toString()}');
+                   debugPrint('Channel Name:- $channelNames');
+                  _handleChatEvent(chat,channelNames);
+                }
       }
+     
       //_handleChatEvent(chat);
   }
 }

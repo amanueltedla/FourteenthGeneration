@@ -12,6 +12,7 @@ TelegramChannelInfo _$TelegramChannelInfoFromJson(Map<String, dynamic> json) {
     json['title'] as String,
     const RxChatPhotoInfoSerializer()
         .fromJson(json['photoInfoRx'] as Map<String, dynamic>),
+    ""
   );
 }
 

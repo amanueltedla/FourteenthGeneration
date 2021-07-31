@@ -7,8 +7,11 @@ class UnknownPostContent extends PostContentWidget {
   UnknownPostContent({Key key, messageInfo})
       : super(key: key, messageInfo: messageInfo);
 
+  // @override
+  // Widget buildMain() => Text(messageInfo.content.getConstructor());
+
   @override
-  Widget buildMain() => Text(messageInfo.content.getConstructor());
+  Widget buildMain() => Container();
 
   @override
   List<String> get contentTypes => [];

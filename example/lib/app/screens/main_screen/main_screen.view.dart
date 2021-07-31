@@ -20,7 +20,7 @@ class MainScreen extends MvcScreen<MainScreenController> {
       ScreenParameters screenParameters, MainScreenController controller) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppScaffold().title),
+        title: Text(AppScaffold().title + " - Resources"),
         backgroundColor: Colors.pink,
       ),
       body: _body,

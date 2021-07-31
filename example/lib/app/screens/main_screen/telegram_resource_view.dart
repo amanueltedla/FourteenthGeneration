@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:id_mvc_app_framework/framework.dart';
-import 'package:id_mvc_app_framework/utils/command/MvcCommandBuilder.dart';
 import 'package:telegram_service_example/app/components/coustom_bottom_nav_bar.dart';
 import 'package:telegram_service_example/app/model/channel_info.dart';
 
 import 'package:telegram_service_example/app/widgets/app_scaffold.dart';
-import 'package:telegram_service_example/app/widgets/messages_listview/messages_listview.view.dart';
+import 'package:telegram_service_example/app/widgets/messages_listview/feed_listview.view.dart';
 
 import '../../../enums.dart';
 import 'main_screen.controller.dart';
@@ -23,7 +22,7 @@ class ResourceScreen extends MvcScreen<MainScreenController> {
         title: Text(AppScaffold().title),
         backgroundColor: Colors.pink,
       ),
-      body: TelegramMessagesList(channelId: null),
+      body: TelegramFeedList(channelId: -1001138874163),
       bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.news),
     );
   }
