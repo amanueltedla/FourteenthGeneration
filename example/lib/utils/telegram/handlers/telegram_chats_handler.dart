@@ -127,9 +127,9 @@ class TdlibChatsHandler extends TelegramEventHandler with GetxServiceMixin {
     // }
       List<String> channels = new List<String>();
       channels.add("YM4TN");
-      channels.add("leadershipskill");
       channels.add("ym4tn_evangelism");
       channels.add("sctransformation");
+      channels.add("leadershipskill");
       channels.add("ym4tntrainingmanual");
       for(var channelNames in channels){
           final chat = await TelegramService.instance.sendCommandWithResult(
