@@ -12,6 +12,7 @@ import 'package:telegram_service_example/app/widgets/telegram_post/post/content_
 import 'package:telegram_service_example/config/exceptions_config.dart';
 import 'package:telegram_service_example/routes/routes.dart';
 
+import 'app/widgets/telegram_post/post/content_widgets/messageDocument_post/messageDocument_post.view.dart';
 import 'app/widgets/telegram_post/post/content_widgets/messageText_post/messageText_post.view.dart';
 
 import 'app/widgets/telegram_post/post/content_widgets/messageVideo_post/messageVideo_post.view.dart';
@@ -33,6 +34,7 @@ void main() async {
       MessageTextPostContent.builder,
       MessagePhotoPostContent.builder,
       MessageVideoPostContent.builder,
+      MessageDocumentPostContent.builder
     ],
     defaultBuilder: null,
   );
